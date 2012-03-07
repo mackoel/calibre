@@ -1,0 +1,15 @@
+diff -up calibre/src/calibre/ebooks/oeb/stylizer.py.cssprofiles calibre/src/calibre/ebooks/oeb/stylizer.py
+--- calibre/src/calibre/ebooks/oeb/stylizer.py.cssprofiles	2009-10-11 19:44:34.190050494 +0300
++++ calibre/src/calibre/ebooks/oeb/stylizer.py	2009-10-11 19:44:54.840926064 +0300
+@@ -18,7 +18,10 @@ from xml.dom import SyntaxErr as CSSSynt
+ import cssutils
+ from cssutils.css import CSSStyleRule, CSSPageRule, CSSStyleDeclaration, \
+     CSSValueList, CSSFontFaceRule, cssproperties
+-from cssutils import profile as cssprofiles
++from cssutils import errorhandler
++log = errorhandler.ErrorHandler()
++from calibre.css_profiles import Profiles
++cssprofiles = Profiles(log=log)
+ from lxml import etree
+ from lxml.cssselect import css_to_xpath, ExpressionError, SelectorSyntaxError
+ from calibre.ebooks.oeb.base import XHTML, XHTML_NS, CSS_MIME, OEB_STYLES

@@ -1,0 +1,20 @@
+diff -up calibre/src/calibre/gui2/ui.py.no_update calibre/src/calibre/gui2/ui.py
+--- calibre/src/calibre/gui2/ui.py.no_update	2009-12-06 23:21:12.298917664 +0200
++++ calibre/src/calibre/gui2/ui.py	2009-12-06 23:21:18.054898861 +0200
+@@ -226,11 +226,11 @@ class Main(MainWindow, Ui_MainWindow, De
+         self.latest_version = ' '
+         self.vanity.setText(self.vanity_template%dict(version=' ', device=' '))
+         self.device_info = ' '
+-        if not opts.no_update_check:
+-            self.update_checker = CheckForUpdates(self)
+-            QObject.connect(self.update_checker,
+-                    SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
+-            self.update_checker.start(2000)
++        # if not opts.no_update_check:
++        #     self.update_checker = CheckForUpdates(self)
++        #     QObject.connect(self.update_checker,
++        #             SIGNAL('update_found(PyQt_PyObject)'), self.update_found)
++        #     self.update_checker.start(2000)
+         ####################### Status Bar #####################
+         self.status_bar = StatusBar(self.jobs_dialog, self.system_tray_icon)
+         self.setStatusBar(self.status_bar)

@@ -1,0 +1,32 @@
+diff -up calibre/src/calibre/linux.py.manpages calibre/src/calibre/linux.py
+--- calibre/src/calibre/linux.py.manpages	2009-10-11 20:11:44.926081363 +0300
++++ calibre/src/calibre/linux.py	2009-10-11 20:11:55.616050312 +0300
+@@ -331,7 +331,7 @@ class PostInstall:
+                     continue
+                 parser = parser()
+                 raw = create_man_page(prog, parser)
+-                manfile = os.path.join(manpath, prog+'.1'+__appname__+'.bz2')
++                manfile = os.path.join(manpath, prog+'.1')
+                 self.info('\tInstalling MAN page for', prog)
+                 open(manfile, 'wb').write(raw)
+                 self.manifest.append(manfile)
+diff -up calibre/src/calibre/utils/help2man.py.manpages calibre/src/calibre/utils/help2man.py
+--- calibre/src/calibre/utils/help2man.py.manpages	2009-10-11 20:12:24.795952999 +0300
++++ calibre/src/calibre/utils/help2man.py	2009-10-11 20:12:52.463949704 +0300
+@@ -3,7 +3,7 @@ __license__ = 'GPL 3'
+ __copyright__ = '2009, Kovid Goyal <kovid@kovidgoyal.net>'
+ __docformat__ = 'restructuredtext en'
+ 
+-import time, bz2
++import time
+ 
+ from calibre.constants import __version__, __appname__, __author__
+ 
+@@ -57,6 +57,6 @@ def create_man_page(prog, parser):
+     lines = [x if isinstance(x, unicode) else unicode(x, 'utf-8', 'replace') for
+             x in lines]
+ 
+-    return  bz2.compress((u'\n'.join(lines)).encode('utf-8'))
++    return  (u'\n'.join(lines).encode('utf-8'))
+ 
+ 
